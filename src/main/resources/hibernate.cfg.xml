@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+
+<hibernate-configuration>
+	<session-factory>
+
+		<mapping class="cz.fim.uhk.cinema.form.Contact" />
+		<mapping class="cz.fim.uhk.cinema.form.Hall" />
+		<mapping class="cz.fim.uhk.cinema.form.Movie" />
+		<mapping class="cz.fim.uhk.cinema.form.PriceCategory" />
+		<mapping class="cz.fim.uhk.cinema.form.Program" />
+		<mapping class="cz.fim.uhk.cinema.form.Reservation" />
+		<mapping class="cz.fim.uhk.cinema.form.User" />
+		<mapping class="cz.fim.uhk.cinema.form.Role" />
+	</session-factory>
+
+</hibernate-configuration>
