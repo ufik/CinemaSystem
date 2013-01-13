@@ -19,7 +19,7 @@
 		<intercept-url pattern="/denied" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/user" access="hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/contact" access="hasRole('ROLE_ADMIN')"/>
 		
 		<form-login login-page="/login" 
 			authentication-failure-url="/login/failure" 
