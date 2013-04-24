@@ -21,7 +21,8 @@
 
 <!-- 	<context:annotation-config /> -->
 <mvc:annotation-driven />
-	<context:component-scan base-package="cz.fim.uhk.cinema.controller" />
+
+<context:component-scan base-package="cz.fim.uhk.cinema.controller" />
 
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -36,6 +37,7 @@
 		<property name="basename" value="classpath:messages" />
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
+	
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:location="/WEB-INF/jdbc.properties" />
@@ -83,6 +85,14 @@
 	<bean id="movieDAO"
 		class="cz.fim.uhk.cinema.dao.MovieDAO">
 	</bean>
+	
+	<bean id="programDAO"
+		class="cz.fim.uhk.cinema.dao.ProgramDAO">
+	</bean>
+	
+	<bean id="reservationsDAO"
+		class="cz.fim.uhk.cinema.dao.ReservationsDAO">
+	</bean>
 		
 	<bean id="customUserDetailsService"
 		class="cz.fim.uhk.cinema.service.CustomUserDetailsService">
@@ -94,6 +104,14 @@
 	
 	<bean id="movieService"
 		class="cz.fim.uhk.cinema.service.MovieService">
+	</bean>
+	
+	<bean id="programService"
+		class="cz.fim.uhk.cinema.service.ProgramService">
+	</bean>
+	
+	<bean id="reservationsService"
+		class="cz.fim.uhk.cinema.service.ReservationsService">
 	</bean>
 
 

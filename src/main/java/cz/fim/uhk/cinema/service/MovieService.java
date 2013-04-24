@@ -25,8 +25,18 @@ public class MovieService {
 	}
 	
 	@Transactional
+	public void updateMovie(Movie movie) {
+		movieDAO.updateMovie(movie);
+	}
+	
+	@Transactional
 	public void removeMovie(Integer id) {
 		movieDAO.removeMovie(id);
+	}
+
+	@Transactional
+	public Object getMovie(Integer movieId) {
+		return movieDAO.getMovie(movieId);
 	}
 
 }

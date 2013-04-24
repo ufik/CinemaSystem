@@ -15,16 +15,25 @@ public class MovieDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void addMovie(Movie contact) {
-		sessionFactory.getCurrentSession().save(contact);
+	public void addMovie(Movie movie) {
+		sessionFactory.getCurrentSession().save(movie);
 	}
 
 	public List<Movie> listMovie() {
 
-		return sessionFactory.getCurrentSession().createQuery("from Movie")
-				.list();
+		return sessionFactory.getCurrentSession().createQuery("from Movie").list();
 	}
+	
+	public Movie getMovie(Integer movieId) {
 
+		List<Movie> l = sessionFactory.getCurrentSession().createQuery("from Movie WHERE id_movie = " + movieId).list();
+		return l.get(0);
+	}
+	
+	public void updateMovie(Movie movie) {
+		sessionFactory.getCurrentSession().update(movie);
+	}
+	
 	public void removeMovie(Integer id) {
 		Movie contact = (Movie) sessionFactory.getCurrentSession().load(
 				Movie.class, id);

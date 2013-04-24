@@ -1,10 +1,12 @@
 package cz.fim.uhk.cinema.form;
-import java.io.Serializable;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class Movie implements Serializable {
@@ -14,10 +16,14 @@ public class Movie implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_movie;
+	@NotEmpty
 	private String name;
 	private String version;
+	@Range(min = 1, max=999)
+	private int length;
 	private double price;
 	private int accessibility;
+	private String description;
 		
 	public Movie() {
 	}
@@ -67,6 +73,22 @@ public class Movie implements Serializable {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }
