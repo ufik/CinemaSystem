@@ -1,5 +1,6 @@
 package cz.fim.uhk.cinema.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,10 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping
 public class AccessController {
-
+	
+	//get log4j handler
+	private static final Logger logger = Logger.getLogger(AccessController.class);
+	
 	@RequestMapping("/login")
 	public String login(Model model, @RequestParam(required=false) String message) {
 		model.addAttribute("message", message);
+				
 		return "access/login";
 	}
 	

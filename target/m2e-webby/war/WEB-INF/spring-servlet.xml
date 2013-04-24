@@ -21,7 +21,7 @@
 
 <!-- 	<context:annotation-config /> -->
 <mvc:annotation-driven />
-	<context:component-scan base-package="cz.fim.uhk.cinema" />
+	<context:component-scan base-package="cz.fim.uhk.cinema.controller" />
 
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -74,6 +74,26 @@
 	
 	<bean id="userDAO"
 		class="cz.fim.uhk.cinema.dao.UserDAO">
+	</bean>
+	
+	<bean id="contactDAO"
+		class="cz.fim.uhk.cinema.dao.ContactDAO">
+	</bean>
+	
+	<bean id="movieDAO"
+		class="cz.fim.uhk.cinema.dao.MovieDAO">
+	</bean>
+		
+	<bean id="customUserDetailsService"
+		class="cz.fim.uhk.cinema.service.CustomUserDetailsService">
+	</bean>
+		
+	<bean id="contactService"
+		class="cz.fim.uhk.cinema.service.ContactService">
+	</bean>
+	
+	<bean id="movieService"
+		class="cz.fim.uhk.cinema.service.MovieService">
 	</bean>
 
 

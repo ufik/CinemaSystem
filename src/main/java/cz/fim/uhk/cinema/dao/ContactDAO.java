@@ -21,13 +21,13 @@ public class ContactDAO {
 
 	public List<Contact> listContact() {
 
-		return sessionFactory.getCurrentSession().createQuery("from Contact")
-				.list();
+		return sessionFactory.getCurrentSession().createQuery("from Contact").list();
 	}
 
 	public void removeContact(Integer id) {
 		Contact contact = (Contact) sessionFactory.getCurrentSession().load(
 				Contact.class, id);
+		
 		if (null != contact) {
 			sessionFactory.getCurrentSession().delete(contact);
 		}

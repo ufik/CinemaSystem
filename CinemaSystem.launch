@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.sonatype.m2e.webby.launchConfigType">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/CinemaSystem"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="CinemaSystem"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.sonatype.m2e.webby.sourcepathProvider"/>
+<stringAttribute key="org.sonatype.m2e.webby.containerHome" value=""/>
+<stringAttribute key="org.sonatype.m2e.webby.containerId" value="jetty7x"/>
+<intAttribute key="org.sonatype.m2e.webby.containerPort" value="8080"/>
+<stringAttribute key="org.sonatype.m2e.webby.containerType" value="embedded"/>
+<stringAttribute key="org.sonatype.m2e.webby.contextName" value=""/>
+<stringAttribute key="org.sonatype.m2e.webby.logLevel" value="medium"/>
+</launchConfiguration>

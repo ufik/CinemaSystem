@@ -17,9 +17,8 @@
 		<intercept-url pattern="/login" access="permitAll"/>
 		<intercept-url pattern="/logout" access="permitAll"/>
 		<intercept-url pattern="/denied" access="hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/" access="hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/user" access="hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/contact" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/" access="permitAll"/>
+		<intercept-url pattern="/admin/**" access="permitAll"/>
 		
 		<form-login login-page="/login" 
 			authentication-failure-url="/login/failure" 
@@ -32,6 +31,9 @@
 			logout-url="/logout"/>
 	</http>
 	
+	<beans:bean id="encoder" 
+    class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
+
 	<authentication-manager>
 	        <authentication-provider user-service-ref="customUserDetailsService">
 	        		<password-encoder hash="md5"/>
