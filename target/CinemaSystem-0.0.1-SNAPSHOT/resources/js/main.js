@@ -9,4 +9,12 @@ $(function(){
 	  setContentSize();
 	});
 	
+	$(".confirm").click(function(){
+		if(confirm("Opravdu chcete provést požadovanou akci?")){
+			return true;
+		}else{
+			return false;
+		}
+	});
+	
 });

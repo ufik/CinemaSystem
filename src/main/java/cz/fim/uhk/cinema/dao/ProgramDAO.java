@@ -21,6 +21,12 @@ public class ProgramDAO {
 		return sessionFactory.getCurrentSession().createQuery("from Program")
 				.list();
 	}
+	
+	public Program getProgram(Integer programId) {
+
+		List<Program> l = sessionFactory.getCurrentSession().createQuery("from Program WHERE id_program = " + programId).list();
+		return l.get(0);
+	}
 
 	public void removeProgram(Integer id) {
 		Program p = (Program) sessionFactory.getCurrentSession().load(

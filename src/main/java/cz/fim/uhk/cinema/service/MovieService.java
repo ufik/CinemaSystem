@@ -39,4 +39,9 @@ public class MovieService {
 		return movieDAO.getMovie(movieId);
 	}
 
+	@Transactional
+	public Movie getMovieByName(String name) {
+		return movieDAO.getMovie(name);
+	}
+
 }

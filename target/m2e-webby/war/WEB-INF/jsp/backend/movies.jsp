@@ -8,6 +8,7 @@
 	   	<th>Cena</th>
 	   	<th>Úpravy</th>
     </tr>
+    
   <c:forEach var="movie" items="${movies}">
     <tr>
       <td>${movie.name}</td>

@@ -74,6 +74,28 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
+	<bean id="customEditorConfigurer"
+                class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+                <property name="customEditors">
+                        <map>
+                                <entry key="cz.fim.uhk.cinema.propertyEditors.MoviePropertyEditor">
+                                        <ref bean="moviePropertyEditor" />
+                                </entry>
+                                <entry key="cz.fim.uhk.cinema.propertyEditors.HallPropertyEditor">
+                                        <ref bean="hallPropertyEditor" />
+                                </entry>
+                        </map>
+                </property>
+        </bean>
+
+           <bean id="moviePropertyEditor"
+                class="cz.fim.uhk.cinema.propertyEditors.MoviePropertyEditor">
+        </bean>
+
+        <bean id="hallPropertyEditor"
+                class="cz.fim.uhk.cinema.propertyEditors.HallPropertyEditor">
+        </bean>
+	
 	<bean id="userDAO"
 		class="cz.fim.uhk.cinema.dao.UserDAO">
 	</bean>
@@ -92,6 +114,10 @@
 	
 	<bean id="reservationsDAO"
 		class="cz.fim.uhk.cinema.dao.ReservationsDAO">
+	</bean>
+	
+	<bean id="hallDAO"
+		class="cz.fim.uhk.cinema.dao.HallDAO">
 	</bean>
 		
 	<bean id="customUserDetailsService"
@@ -114,5 +140,8 @@
 		class="cz.fim.uhk.cinema.service.ReservationsService">
 	</bean>
 
+	<bean id="hallService"
+		class="cz.fim.uhk.cinema.service.HallService">
+	</bean>
 
 </beans>

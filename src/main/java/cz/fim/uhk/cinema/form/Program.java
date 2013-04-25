@@ -1,13 +1,14 @@
 package cz.fim.uhk.cinema.form;
 
 import java.io.Serializable;
-import java.sql.Date;
-
+import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
+import com.sun.istack.NotNull;
 
 @Entity
 public class Program implements Serializable{
@@ -18,15 +19,22 @@ public class Program implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_program;
 	
-	private Date date;
+
+	private Timestamp date;
 	
+	@NotNull
+    @Valid
 	@OneToOne
 	private Movie movie;
 	
+	@NotNull
+    @Valid
 	@OneToOne
 	private Hall hall;
 	
-	public Program(Date date, Movie movie, Hall hall) {
+	public Program(){}
+	
+	public Program(Timestamp date, Movie movie, Hall hall) {
 		super();
 		this.date = date;
 		this.movie = movie;
@@ -41,11 +49,11 @@ public class Program implements Serializable{
 		this.id_program = id_program;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

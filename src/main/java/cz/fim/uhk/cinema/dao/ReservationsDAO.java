@@ -28,6 +28,10 @@ public class ReservationsDAO {
 		if (null != r) {
 			sessionFactory.getCurrentSession().delete(r);
 		}
+	}
 
+	public Reservation getReservation(Integer reservationId) {
+		List<Reservation> l = sessionFactory.getCurrentSession().createQuery("from Reservation WHERE id_reservation = " + reservationId).list();
+		return l.get(0);
 	}
 }

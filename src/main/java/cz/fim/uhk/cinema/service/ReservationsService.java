@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cz.fim.uhk.cinema.dao.ReservationsDAO;
+import cz.fim.uhk.cinema.form.Movie;
 import cz.fim.uhk.cinema.form.Reservation;
 
 @Service
@@ -26,6 +27,10 @@ public class ReservationsService {
 	@Transactional
 	public void removeReservation(Integer id) {
 		reservationsDAO.removeReservation(id);
+	}
+
+	public Reservation getReservation(Integer reservationId) {
+		return reservationsDAO.getReservation(reservationId);
 	}
 
 }

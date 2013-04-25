@@ -19,6 +19,8 @@ public class Hall implements Serializable {
 	private int rows;
 	private int columns;
 	
+	public Hall(){}
+	
 	public Hall(String name, int capacity, int rows, int columns) {
 		super();
 		this.name = name;

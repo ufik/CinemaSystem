@@ -29,4 +29,8 @@ public class ProgramService {
 		programDAO.removeProgram(id);
 	}
 
+	@Transactional
+	public Program getProgram(Integer id) {
+		return programDAO.getProgram(id);
+	}
 }

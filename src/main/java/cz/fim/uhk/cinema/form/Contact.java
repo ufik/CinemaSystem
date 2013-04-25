@@ -6,9 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.NotEmpty;
-
 
 @Entity
 @Table(name="contacts")
@@ -32,7 +30,6 @@ public class Contact {
 	
 	@Column(name="telephone")
 	private String telephone;
-	
 	
 	public String getEmail() {
 		return email;

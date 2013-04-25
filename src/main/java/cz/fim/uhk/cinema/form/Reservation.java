@@ -1,13 +1,15 @@
 package cz.fim.uhk.cinema.form;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class Reservation {
@@ -15,55 +17,104 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_reservation;
-	
-	private Date date;
-	
-	@OneToOne
-	private Contact contact;
-	
-	@OneToOne
-	private Hall hall;
-	
-	@OneToMany
-	private List<Movie> movies;
 
-	public Reservation(Contact contact, Hall hall, List<Movie> movies) {
+	private Timestamp date;
+	
+	@NotEmpty
+	private String firstname;
+	
+	@NotEmpty
+	private String lastname;
+	
+	@NotEmpty
+	private String email;
+	
+	@NotEmpty
+	@Range(min=9, max=12)
+	private String telephone;
+	
+	@NotEmpty
+	@OneToMany
+	private List<Program> programItems;
+	
+	public Reservation(){
+		this.date = new Timestamp(new java.util.Date().getTime());
+	}
+	
+	public Reservation(List<Program> programItems) {
 		super();
-		this.contact = contact;
-		this.hall = hall;
-		this.movies = movies;
+	
+		this.date = new Timestamp(new java.util.Date().getTime());
+		this.programItems = programItems;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 
-	public Contact getContact() {
-		return contact;
+	
+	/**
+	 * @return the programItems
+	 */
+	public List<Program> getProgramItems() {
+		return programItems;
 	}
 
-	public void setContact(Contact contact) {
-		this.contact = contact;
+	/**
+	 * @param programItems the programItems to set
+	 */
+	public void setProgramItems(List<Program> programItems) {
+		this.programItems = programItems;
 	}
 
-	public Hall getHall() {
-		return hall;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setHall(Hall hall) {
-		this.hall = hall;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public List<Movie> getMovies() {
-		return movies;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setMovies(List<Movie> movies) {
-		this.movies = movies;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	
+	/**
+	 * @return the id_reservation
+	 */
+	public int getId_reservation() {
+		return id_reservation;
+	}
+
+	/**
+	 * @param id_reservation the id_reservation to set
+	 */
+	public void setId_reservation(int id_reservation) {
+		this.id_reservation = id_reservation;
 	}
 
 }

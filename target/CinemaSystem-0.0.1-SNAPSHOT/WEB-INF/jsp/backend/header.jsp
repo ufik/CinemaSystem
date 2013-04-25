@@ -9,10 +9,12 @@
 	<title>Administrace systému</title>
 
 	<spring:url value="/resources/css/style.css" var="css_url" />
+	<spring:url value="/resources/css/datagrid.css" var="datagridCss_url" />
 	<spring:url value="/resources/libs/jquery-min.js" var="jquery_url" />
 	<spring:url value="/resources/js/main.js" var="mainjs_url" />
 	
 	<link rel="stylesheet" type="text/css" href="${css_url}" />
+	<link rel="stylesheet" type="text/css" href="${datagridCss_url}" />
 	
 	<script src="${jquery_url}"></script>
 	<script src="${mainjs_url}"></script>

@@ -42,4 +42,9 @@ public class MovieDAO {
 		}
 
 	}
+
+	public Movie getMovie(String name) {
+		List<Movie> l = sessionFactory.getCurrentSession().createQuery("from Movie WHERE name = " + name).list();
+		return l.get(0);
+	}
 }

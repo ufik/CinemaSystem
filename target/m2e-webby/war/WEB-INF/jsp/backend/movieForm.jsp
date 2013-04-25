@@ -14,13 +14,11 @@
 	<table>
 		<tr>
 			<td><form:label path="name"><spring:message code="label.moviename"/></form:label></td>
-			<td><form:input path="name" /></td> 
-			<td><form:errors path="name" cssClass="error" /></td>
+			<td><form:input path="name" /><form:errors path="name" cssClass="error" /></td> 
 		</tr>
 		<tr>
 			<td><form:label path="length"><spring:message code="label.movielength"/></form:label></td>
-			<td><form:input path="length" /></td> 
-			<td><form:errors path="length" cssClass="error" /></td>
+			<td><form:input path="length" /><form:errors path="length" cssClass="error" /></td> 
 		</tr>
 		<tr>
 			<td><form:label path="price"><spring:message code="label.movieprice"/></form:label></td>
