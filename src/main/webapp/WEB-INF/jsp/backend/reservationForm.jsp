@@ -1,7 +1,7 @@
 <%@include file="header.jsp" %>
 
 <c:choose>
-      <c:when test="${reservation.id_reservation == 0}">
+      <c:when test="${empty reservationForm.id_reservation}">
       	<c:set var="postUrl" value="admin/reservations/add" />
       </c:when>
       <c:otherwise>
@@ -9,7 +9,8 @@
       </c:otherwise>
 </c:choose>
 
-<form:form method="post" action="${postUrl}" commandName="reservation">
+<form:form method="post" action="${postUrl}" commandName="reservation" modelAttribute="reservationForm">
+<form:hidden path="id_reservation" />
 	<table>
 		<tr>
 			<td><form:label path="firstname"><spring:message code="label.reservationsfirstname"/></form:label></td>
@@ -30,14 +31,20 @@
 		<tr>
 			<td><form:label path="programItems"><spring:message code="label.reservationsprogramitems"/></form:label></td>
 			<td>
-				<form:select path="programItems">
-				<form:options items="${program}" itemValue="movie.name" itemLabel="movie.name"/>
-			</form:select><form:errors path="programItems" cssClass="error" />
+				<input type="search" id="searchProgram" list="programList" autocomplete="on" />
+				<datalist id="programList">
+					<c:forEach items="${program}" var="p">
+						<option value="${p.movie.name} ${p.hall.name} ${p.date} #${p.id_program}" />
+					</c:forEach>
+				</datalist>
+				
+				<form:errors path="programItems" cssClass="error" />
 			</td>
 		</tr>		
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="<spring:message code="label.addreservation" />"/>
+				<input type="submit" class="btn btn-large btn-success" value="<spring:message code="label.addreservation" />"/>
+				<a href="admin/reservations" class="btn btn-large btn-danger">Zrušit</a>
 			</td>
 		</tr>
 	</table>	

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cz.fim.uhk.cinema.dao.ProgramDAO;
-import cz.fim.uhk.cinema.form.Program;
+import cz.fim.uhk.cinema.entity.Program;
 
 
 @Service
@@ -33,4 +33,5 @@ public class ProgramService {
 	public Program getProgram(Integer id) {
 		return programDAO.getProgram(id);
 	}
+
 }

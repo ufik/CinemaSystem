@@ -4,7 +4,8 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import cz.fim.uhk.cinema.form.Hall;
+
+import cz.fim.uhk.cinema.entity.Hall;
 
 @Repository
 public class HallDAO {

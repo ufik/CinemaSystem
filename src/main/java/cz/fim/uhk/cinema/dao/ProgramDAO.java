@@ -4,7 +4,8 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import cz.fim.uhk.cinema.form.Program;
+
+import cz.fim.uhk.cinema.entity.Program;
 
 @Repository
 public class ProgramDAO {
@@ -13,7 +14,7 @@ public class ProgramDAO {
 	private SessionFactory sessionFactory;
 
 	public void addProgram(Program program) {
-		sessionFactory.getCurrentSession().save(program);
+		sessionFactory.getCurrentSession().saveOrUpdate(program);
 	}
 
 	public List<Program> listProgram() {

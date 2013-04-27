@@ -33,7 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	 */
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
-			cz.fim.uhk.cinema.form.User domainUser = userRepository.findByUsername(username);
+			cz.fim.uhk.cinema.entity.User domainUser = userRepository.findByUsername(username);
 			
 			boolean enabled = true;
 			boolean accountNonExpired = true;

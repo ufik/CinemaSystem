@@ -1,7 +1,7 @@
 <%@include file="header.jsp" %>
 
 <c:choose>
-      <c:when test="${empty movie.name}">
+      <c:when test="${movie.id_movie == 0}">
       	<c:set var="postUrl" value="admin/movies/add" />
       </c:when>
       <c:otherwise>
@@ -10,7 +10,7 @@
 </c:choose>
 
 <form:form method="post" action="${postUrl}" commandName="movie">
-
+<form:hidden path="id_movie" />
 	<table>
 		<tr>
 			<td><form:label path="name"><spring:message code="label.moviename"/></form:label></td>
@@ -30,7 +30,8 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="<spring:message code="label.addmovie" />"/>
+				<input type="submit" class="btn btn-large btn-success" value="<spring:message code="label.addmovie" />"/>
+				<a href="admin/movies" class="btn btn-large btn-danger">Zrušit</a>
 			</td>
 		</tr>
 	</table>	

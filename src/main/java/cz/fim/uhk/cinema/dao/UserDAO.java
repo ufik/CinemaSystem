@@ -3,7 +3,7 @@ package cz.fim.uhk.cinema.dao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cz.fim.uhk.cinema.form.User;
+import cz.fim.uhk.cinema.entity.User;
 
 public class UserDAO{
 	

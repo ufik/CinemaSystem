@@ -1,4 +1,4 @@
-package cz.fim.uhk.cinema.form;
+package cz.fim.uhk.cinema.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

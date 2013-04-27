@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cz.fim.uhk.cinema.dao.ReservationsDAO;
-import cz.fim.uhk.cinema.form.Movie;
-import cz.fim.uhk.cinema.form.Reservation;
+import cz.fim.uhk.cinema.entity.Movie;
+import cz.fim.uhk.cinema.entity.Reservation;
 
 @Service
 public class ReservationsService {

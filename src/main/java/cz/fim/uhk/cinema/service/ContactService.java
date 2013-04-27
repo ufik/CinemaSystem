@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cz.fim.uhk.cinema.dao.ContactDAO;
-import cz.fim.uhk.cinema.form.Contact;
+import cz.fim.uhk.cinema.entity.Contact;
 
 @Service
 public class ContactService {

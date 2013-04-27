@@ -1,4 +1,4 @@
-package cz.fim.uhk.cinema.form;
+package cz.fim.uhk.cinema.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import com.sun.istack.NotNull;
+
+import cz.fim.uhk.cinema.form.ProgramForm;
 
 @Entity
 public class Program implements Serializable{

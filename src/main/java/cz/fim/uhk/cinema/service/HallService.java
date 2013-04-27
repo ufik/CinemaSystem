@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cz.fim.uhk.cinema.dao.HallDAO;
-import cz.fim.uhk.cinema.form.Hall;
+import cz.fim.uhk.cinema.entity.Hall;
 
 @Service
 public class HallService {
@@ -34,7 +34,7 @@ public class HallService {
 	}
 
 	@Transactional
-	public Object getHall(Integer hallId) {
+	public Hall getHall(Integer hallId) {
 		return hallDAO.getHall(hallId);
 	}
 

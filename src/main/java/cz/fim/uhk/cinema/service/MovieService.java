@@ -5,7 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cz.fim.uhk.cinema.dao.MovieDAO;
-import cz.fim.uhk.cinema.form.Movie;
+import cz.fim.uhk.cinema.entity.Movie;
+import cz.fim.uhk.cinema.entity.Program;
 
 
 @Service
@@ -35,7 +36,7 @@ public class MovieService {
 	}
 
 	@Transactional
-	public Object getMovie(Integer movieId) {
+	public Movie getMovie(Integer movieId) {
 		return movieDAO.getMovie(movieId);
 	}
 
@@ -43,5 +44,6 @@ public class MovieService {
 	public Movie getMovieByName(String name) {
 		return movieDAO.getMovie(name);
 	}
+
 
 }
