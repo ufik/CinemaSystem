@@ -1,9 +1,15 @@
 package cz.fim.uhk.cinema.form;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class ReservationForm{
+public class ReservationForm implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private Integer id_reservation;
 	private Timestamp date;
@@ -12,10 +18,11 @@ public class ReservationForm{
 	private String lastname;
 	private String email;
 	private String telephone;
-	private List<Integer> programItems;
+	private List<String> programItems;
 	
 	public ReservationForm(Timestamp date, Integer contact_id,
-			String firstname, String lastname, String email, String telephone, List<Integer> programItems) {
+			String firstname, String lastname, String email, String telephone, List<String> programItems) {
+		
 		super();
 		this.date = date;
 		this.contact_id = contact_id;
@@ -25,6 +32,7 @@ public class ReservationForm{
 		this.telephone = telephone;
 		this.setProgramItems(programItems);
 	}
+	
 	public ReservationForm() {
 		// TODO Auto-generated constructor stub
 	}
@@ -100,10 +108,10 @@ public class ReservationForm{
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	public List<Integer> getProgramItems() {
+	public List<String> getProgramItems() {
 		return programItems;
 	}
-	public void setProgramItems(List<Integer> programItems) {
+	public void setProgramItems(List<String> programItems) {
 		this.programItems = programItems;
 	}
 	public Integer getId_reservation() {
@@ -112,5 +120,6 @@ public class ReservationForm{
 	public void setId_reservation(Integer id_reservation) {
 		this.id_reservation = id_reservation;
 	}
+
 	
 }

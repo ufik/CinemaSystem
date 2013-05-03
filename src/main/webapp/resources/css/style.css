@@ -1,23 +1,25 @@
 body{
 	font-family: verdana, helvetica, sans-serif;  
 	margin: 0px;	
-}
-
-@font-face {  
-  font-family: Days;  
-  src: url( ../fonts/Days.otf) format("opentype");  
-}  
+} 
  
 
 header {
 	position: fixed;
-	background-color: #fff;
+	background-color: #fbfbfb;
 	border: 1px solid #e2e2e2;
 	display: block;
-	height: 50px;
+	height: 40px;
 	width: 100%;
 	top: 0px;
 	z-index: 10000;
+	transition: background-color 4s, top 1s;
+	-webkit-transition: background-color 4s, top 1s;
+}
+
+header:hover {
+	background-color: #fbfbfb;
+	top: 0px;
 }
 
 header .settings-button {
@@ -25,7 +27,7 @@ header .settings-button {
 	position: fixed;
 	display: block;
 	width: 100px;
-	height: 52px;
+	height: 40px;
 	right: 0px;
 	top: 0px;
 	cursor: pointer;
@@ -43,6 +45,12 @@ header .logout {
 	right: 100px;
 }
 
+#head-pannel{
+	text-align: right;
+	padding-top: 5px;	
+	padding-right: 10px;
+}
+
 .settings h1 {
 	position: fixed;
 	top: 44px;
@@ -50,6 +58,11 @@ header .logout {
 	color: black;
 	font-size: 10px;
 	-webkit-transition: font-size 1s;
+}
+
+header #timestamp{
+	position: fixed;
+	left: 10px;
 }
 
 .settings .bigger {
@@ -129,7 +142,7 @@ footer a{
 	background-color: #fbfbfb;
 	border: 1px solid #e2e2e2;
 	height: 100%;
-	top: 50px;
+	top: 40px;
 	width: 200px;
 }
 
@@ -222,7 +235,7 @@ a {
 
 .content {
 	position: relative;
-	top: 50px;
+	top: 10px;
 	left: 200px;
 	padding: 10px;
 	z-index: 1;
@@ -241,11 +254,7 @@ a {
 	width: 30px;
 }
 
-#head-pannel{
-	text-align: right;
-	padding-top: 10px;	
-	padding-right: 10px;
-}
+
 
 /* Upozorneni */
 
@@ -348,6 +357,7 @@ input[type="color"],
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
+   width: 500px;
 }
 
 input,
@@ -1201,5 +1211,5 @@ a.btn {
 }
 
 table.datagrid th.controll {
-	width: 115px;
+	width: 120px;
 }

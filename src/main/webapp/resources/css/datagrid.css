@@ -23,6 +23,9 @@ table.datagrid tr {
 table.datagrid tbody tr.even {
 	background: #F6F7FA;
 }
+table.datagrid tbody tr.old {
+	background: #FF7373;
+}
 table.datagrid tbody tr:hover {
 	background: #E1E7F3 !important;
 }

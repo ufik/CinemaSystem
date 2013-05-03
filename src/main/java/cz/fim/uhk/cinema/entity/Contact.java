@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="contacts")
@@ -15,9 +14,8 @@ public class Contact {
 	@Id
 	@Column(name="id_contact")
 	@GeneratedValue
-	private Integer id;
+	private int id;
 	
-	@NotEmpty
 	@Size(min = 1, max = 50)
 	@Column(name="first_name")
 	private String firstname;
@@ -55,10 +53,10 @@ public class Contact {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

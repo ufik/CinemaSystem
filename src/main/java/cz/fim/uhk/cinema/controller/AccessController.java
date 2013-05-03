@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AccessController {
 	
 	//get log4j handler
-	private static final Logger logger = Logger.getLogger(AccessController.class);
+	//private static final Logger logger = Logger.getLogger(AccessController.class);
 	
 	@RequestMapping("/login")
 	public String login(Model model, @RequestParam(required=false) String message) {

@@ -1,12 +1,12 @@
 package cz.fim.uhk.cinema.service;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cz.fim.uhk.cinema.dao.ProgramDAO;
 import cz.fim.uhk.cinema.entity.Program;
-
 
 @Service
 public class ProgramService {
@@ -17,6 +17,11 @@ public class ProgramService {
 	@Transactional
 	public List<Program> list() {		
 		return programDAO.listProgram();
+	}
+	
+	@Transactional
+	public List<Program> list(Date from, Date to) {		
+		return programDAO.listProgram(from, to);
 	}
 	
 	@Transactional
@@ -32,6 +37,11 @@ public class ProgramService {
 	@Transactional
 	public Program getProgram(Integer id) {
 		return programDAO.getProgram(id);
+	}
+
+	@Transactional
+	public List<Program> actualList() {
+		return programDAO.listActualProgram();
 	}
 
 }

@@ -10,8 +10,6 @@ import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import com.sun.istack.NotNull;
 
-import cz.fim.uhk.cinema.form.ProgramForm;
-
 @Entity
 public class Program implements Serializable{
 
@@ -20,18 +18,17 @@ public class Program implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_program;
-	
 
 	private Timestamp date;
 	
 	@NotNull
     @Valid
-	@OneToOne
+    @OneToOne
 	private Movie movie;
 	
 	@NotNull
     @Valid
-	@OneToOne
+    @OneToOne
 	private Hall hall;
 	
 	public Program(){}
@@ -75,4 +72,9 @@ public class Program implements Serializable{
 		this.hall = hall;
 	}
 	
+	public boolean getOld(){
+		if(this.date.compareTo(new Timestamp(new java.util.Date().getTime())) > 0) return true;
+		
+		return false;
+	}
 }

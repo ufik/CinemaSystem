@@ -19,7 +19,7 @@ public class ContactService {
 	}
 
 	@Transactional
-	public List<Contact> listContact() {
+	public List<Contact> list() {
 
 		return contactDAO.listContact();
 	}
@@ -27,5 +27,15 @@ public class ContactService {
 	@Transactional
 	public void removeContact(Integer id) {
 		contactDAO.removeContact(id);
+	}
+	
+	@Transactional
+	public Contact getContact(Integer id) {
+		return contactDAO.getContact(id);
+	}
+	
+	@Transactional
+	public void updateContact(Contact contact) {
+		contactDAO.updateContact(contact);
 	}
 }

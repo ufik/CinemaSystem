@@ -5,15 +5,15 @@
 
 
 <hibernate-configuration>
-
+	
 	<session-factory>
-		 
 		<mapping class="cz.fim.uhk.cinema.entity.Contact" />
 		<mapping class="cz.fim.uhk.cinema.entity.Hall" />
 		<mapping class="cz.fim.uhk.cinema.entity.Movie" />
 		<mapping class="cz.fim.uhk.cinema.entity.PriceCategory" />
 		<mapping class="cz.fim.uhk.cinema.entity.Program" />
 		<mapping class="cz.fim.uhk.cinema.entity.Reservation" />
+		<mapping class="cz.fim.uhk.cinema.entity.ReservationItem" />
 		<mapping class="cz.fim.uhk.cinema.entity.User" />
 		<mapping class="cz.fim.uhk.cinema.entity.Role" />
 	</session-factory>

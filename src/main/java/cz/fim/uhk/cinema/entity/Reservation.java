@@ -35,17 +35,17 @@ public class Reservation {
 	
 	@NotEmpty
 	@OneToMany
-	private List<Program> programItems;
+	private List<ReservationItem> reservationItems;
 	
 	public Reservation(){
 		this.date = new Timestamp(new java.util.Date().getTime());
 	}
 	
-	public Reservation(List<Program> programItems) {
+	public Reservation(List<ReservationItem> reservationItems) {
 		super();
 	
 		this.date = new Timestamp(new java.util.Date().getTime());
-		this.programItems = programItems;
+		this.reservationItems = reservationItems;
 	}
 
 	public Timestamp getDate() {
@@ -60,15 +60,15 @@ public class Reservation {
 	/**
 	 * @return the programItems
 	 */
-	public List<Program> getProgramItems() {
-		return programItems;
+	public List<ReservationItem> getProgramItems() {
+		return reservationItems;
 	}
 
 	/**
 	 * @param programItems the programItems to set
 	 */
-	public void setProgramItems(List<Program> programItems) {
-		this.programItems = programItems;
+	public void setProgramItems(List<ReservationItem> programItems) {
+		this.reservationItems = programItems;
 	}
 
 	public String getFirstname() {

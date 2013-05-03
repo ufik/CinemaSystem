@@ -1,7 +1,7 @@
 <%@include file="header.jsp" %>
 
 <c:choose>
-      <c:when test="${empty reservationForm.id_reservation}">
+      <c:when test="${reservationForm.id_reservation == 0}">
       	<c:set var="postUrl" value="admin/reservations/add" />
       </c:when>
       <c:otherwise>
@@ -9,7 +9,7 @@
       </c:otherwise>
 </c:choose>
 
-<form:form method="post" action="${postUrl}" commandName="reservation" modelAttribute="reservationForm">
+<form:form method="post" action="${postUrl}" commandName="reservationForm" modelAttribute="reservationForm">
 <form:hidden path="id_reservation" />
 	<table>
 		<tr>
@@ -31,7 +31,8 @@
 		<tr>
 			<td><form:label path="programItems"><spring:message code="label.reservationsprogramitems"/></form:label></td>
 			<td>
-				<input type="search" id="searchProgram" list="programList" autocomplete="on" />
+				
+				<input type="search" id="searchProgram" list="programList" autocomplete="off" />
 				<datalist id="programList">
 					<c:forEach items="${program}" var="p">
 						<option value="${p.movie.name} ${p.hall.name} ${p.date} #${p.id_program}" />

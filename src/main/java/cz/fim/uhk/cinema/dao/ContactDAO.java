@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cz.fim.uhk.cinema.entity.Contact;
+import cz.fim.uhk.cinema.entity.Hall;
 
 @Repository
 public class ContactDAO {
@@ -32,5 +33,14 @@ public class ContactDAO {
 			sessionFactory.getCurrentSession().delete(contact);
 		}
 
+	}
+
+	public Contact getContact(Integer idContact) {
+		List<Contact> l = sessionFactory.getCurrentSession().createQuery("from Contact WHERE id_contact = " + idContact).list();
+		return l.get(0);
+	}
+
+	public void updateContact(Contact contact) {
+		sessionFactory.getCurrentSession().update(contact);
 	}
 }

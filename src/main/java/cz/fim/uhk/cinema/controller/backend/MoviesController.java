@@ -1,8 +1,15 @@
 package cz.fim.uhk.cinema.controller.backend;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Map;
 import javax.validation.Valid;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -33,6 +40,9 @@ public class MoviesController {
 	public String listMovies(Map<String, Object> map) {
 		this.setId(map);
 		
+		// pro rychle vkladani filmu pomoci csfd id
+		map.put("movie", new Movie());
+		
 		map.put("title", "Správa filmů");
 		map.put("movies", movieService.list());
 		return "backend/movies";
@@ -56,7 +66,7 @@ public class MoviesController {
 	
 	@RequestMapping(value = "/admin/movies/add", method = RequestMethod.POST)	
 	public String addMovie(ModelMap model, @Valid @ModelAttribute("movie")
-	 Movie movie, BindingResult result, Locale locale, RedirectAttributes ra) {
+	 Movie movie, BindingResult result, Locale locale, RedirectAttributes ra) throws IOException, JSONException {
 		this.setId(model);
 		
 		if (result.hasErrors()) {
@@ -64,6 +74,7 @@ public class MoviesController {
             return "backend/movieForm";
 		}
 		
+		if(movie.getCsfdId() != 0) movie.fullFillCsfdData();
 		movieService.addMovie(movie);
 
 		ra.addFlashAttribute("SUCCESS_MESSAGE", messageSource.getMessage("moviesavestatus", null, locale));
@@ -73,7 +84,7 @@ public class MoviesController {
 	
 	@RequestMapping(value = "/admin/movies/udpate", method = RequestMethod.POST)	
 	public String updateMovie(ModelMap model, @Valid @ModelAttribute("movie")
-	 Movie movie, BindingResult result, Locale locale, RedirectAttributes ra) {
+	 Movie movie, BindingResult result, Locale locale, RedirectAttributes ra) throws IOException, JSONException {
 		this.setId(model);
 		
 		if (result.hasErrors()) {
@@ -81,6 +92,7 @@ public class MoviesController {
             return "backend/movieForm";
 		}
 		
+		if(movie.getCsfdId() != 0) movie.fullFillCsfdData();
 		movieService.updateMovie(movie);
 		ra.addFlashAttribute("SUCCESS_MESSAGE", messageSource.getMessage("moviesavestatus", null, locale));
 		
@@ -96,4 +108,6 @@ public class MoviesController {
 		
 		return "redirect:/admin/movies";
 	}
+	
+  
 }

@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Hall implements Serializable {
@@ -14,9 +18,12 @@ public class Hall implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_hall;
+	@NotEmpty
 	private String name;
 	private int capacity;
+	@Min(value = 1)
 	private int rows;
+	@Min(value = 1)
 	private int columns;
 	
 	public Hall(){}
@@ -46,11 +53,7 @@ public class Hall implements Serializable {
 	}
 
 	public int getCapacity() {
-		return capacity;
-	}
-
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
+		return this.rows * this.columns;
 	}
 
 	public int getRows() {

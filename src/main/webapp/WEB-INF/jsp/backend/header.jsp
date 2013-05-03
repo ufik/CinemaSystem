@@ -1,6 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -17,6 +18,7 @@
 	<spring:url value="/resources/js/datetime-polyfill.js" var="datetime_polyfill_url" />
 	<spring:url value="/resources/libs/modernizr.js" var="modernizr_url" />
 	<spring:url value="/resources/js/main.js" var="mainjs_url" />
+	<spring:url value="/resources/js/Cinema.js" var="cinema_url" />
 	
 	<link rel="stylesheet" type="text/css" href="${css_url}" />
 	<link rel="stylesheet" type="text/css" href="${datagridCss_url}" />
@@ -28,13 +30,15 @@
 	<script src="${mainjs_url}"></script>
 	<script src="${jquery_ui_url}"></script>
 	<script src="${datetime_polyfill_url}"></script>
+	<script src="${cinema_url}"></script>
 </head>
 <body>
 
 <header>
 	<div id="head-pannel">
+		<time id="timestamp"></time>
 		<a class="btn btn-primary" href="">Nastavení účtu</a>
-		<a class="btn btn-danger" href="">Odhlásit se</a>
+		<a class="btn btn-danger confirm" href="">Odhlásit se</a>
 	</div>
 </header>
 
