@@ -91,13 +91,21 @@ function Cinema(){
 	 * 
 	 * @param seat
 	 */
-	self.addProgramItem = function(seat){
+	self.addProgramItem = function(seat, row, column){
 		var s = $(seat).data();
+		var noInput = false;
+		var programId = $("#programId").val();
 		
-		var input = "<input class='"+s.row +"-"+s.column +"' type='hidden' name='programItems[]' value='"+s.row +","+s.column +"' />";
+		if(seat == null){
+			s = {row: row, column: column};
+			noInput = true;
+		}
+		
+		var input = "<input class='"+s.row +"-"+s.column +"' type='hidden' name='programItems' value='"+s.row +","+s.column +","+programId+"' />";
 		var block = "<div class='"+s.row +"-"+s.column +"'>Rezervováno sedadlo "+s.column+" z řady "+s.row+".</div>";
 		
-		$("#reserveForm").append(input);
+		$("span.seat[data-row='"+s.row+"'] span.seat[data-column='"+s.column+"']").addClass("selected");
+		if(!noInput) $("#reserveForm").append(input);
 		$("#reserve").append(block);
 		console.log("adding reservation item");
 	};

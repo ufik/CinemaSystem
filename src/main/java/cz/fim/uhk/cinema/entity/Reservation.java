@@ -1,6 +1,7 @@
 package cz.fim.uhk.cinema.entity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Reservation {
 	
 	@NotEmpty
 	@OneToMany
-	private List<ReservationItem> reservationItems;
+	private List<ReservationItem> reservationItems = new ArrayList<ReservationItem>();
 	
 	public Reservation(){
 		this.date = new Timestamp(new java.util.Date().getTime());
@@ -60,14 +61,14 @@ public class Reservation {
 	/**
 	 * @return the programItems
 	 */
-	public List<ReservationItem> getProgramItems() {
+	public List<ReservationItem> getReservationItems() {
 		return reservationItems;
 	}
 
 	/**
 	 * @param programItems the programItems to set
 	 */
-	public void setProgramItems(List<ReservationItem> programItems) {
+	public void setReservationItems(List<ReservationItem> programItems) {
 		this.reservationItems = programItems;
 	}
 

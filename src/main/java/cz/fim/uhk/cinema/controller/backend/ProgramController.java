@@ -67,7 +67,7 @@ public class ProgramController {
 		this.setId(map);
 		
 		Program program = programService.getProgram(programId);
-		ProgramForm programForm = new ProgramForm(program.getId_program(), new SimpleDateFormat("YYYY-MM-dd'T'hh:mm'Z'").format(program.getDate()), program.getMovie().getId_movie(), program.getHall().getId_hall());
+		ProgramForm programForm = new ProgramForm(program.getId_program(), new SimpleDateFormat("YYYY-MM-dd'T'HH:mm'Z'").format(program.getDate()), program.getMovie().getId_movie(), program.getHall().getId_hall());
 		
 		map.put("halls", hallService.list());
 		map.put("movies", movieService.list());
@@ -135,15 +135,16 @@ public class ProgramController {
 	
 	public static Timestamp parseRFC3339Date(String datestring) throws java.text.ParseException, IndexOutOfBoundsException{
 	    Date d = new Date();
-
+	    SimpleDateFormat s;
 	        //if there is no time zone, we don't need to do any special parsing.
 	    if(datestring.endsWith("Z")){
 	      try{
-	        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");//spec for RFC3339					
+	        s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");//spec for RFC3339					
 	        d = s.parse(datestring);		  
+	        
 	      }
 	      catch(java.text.ParseException pe){//try again with optional decimals
-	        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");//spec for RFC3339 (with fractional seconds)
+	        s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");//spec for RFC3339 (with fractional seconds)
 	        s.setLenient(true);
 	        d = s.parse(datestring);		  
 	      }
@@ -159,7 +160,7 @@ public class ProgramController {
 	          //step two, remove the colon from the timezone offset
 	    secondpart = secondpart.substring(0,secondpart.indexOf(':')) + secondpart.substring(secondpart.indexOf(':')+1);
 	    datestring  = firstpart + secondpart;
-	    SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mmZ");//spec for RFC3339		
+	    s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mmZ");//spec for RFC3339		
 	    try{
 	      d = s.parse(datestring);		  
 	    }
@@ -168,6 +169,7 @@ public class ProgramController {
 	      s.setLenient(true);
 	      d = s.parse(datestring);		  
 	    }
+
 	    long time = d.getTime();
 	     return new Timestamp(time);
 	  }

@@ -6,12 +6,17 @@ import java.util.GregorianCalendar;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import cz.fim.uhk.cinema.entity.Reservation;
 import cz.fim.uhk.cinema.service.ContactService;
 import cz.fim.uhk.cinema.service.MovieService;
 import cz.fim.uhk.cinema.service.ProgramService;
 
+@SessionAttributes("reservation")
 @Controller
 public class IndexController {
 
@@ -23,10 +28,11 @@ public class IndexController {
 
 	@Autowired
 	private ProgramService programService;
-
+	
+	
 	@RequestMapping("/")
-	public String index(Map<String, Object> map) {
-
+	public String index(Map<String, Object> map, @ModelAttribute("reservation") Reservation reservation) {
+		
 		// dnesni program
 		map.put("programToday", programService.list(this.getDate(0), this.getDate(1)));
 		// zitra
@@ -35,6 +41,7 @@ public class IndexController {
 		map.put("program2Days", programService.list(this.getDate(2), this.getDate(3)));
 		
 		map.put("movies", movieService.list());
+		map.put("reservation", reservation);
 		return "index";
 	}
 	

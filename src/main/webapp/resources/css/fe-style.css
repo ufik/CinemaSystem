@@ -24,11 +24,11 @@
 .programBlock{
 	display: inline-block;
 	width: 180px;
-	height: 180px;
+	height: 60px;
 }
 
 /* Definice slideru */
-body { background: #e8e8e8; }
+body { background: #e2e2e2; }
 .container { margin: 0 auto; }
 
 /* Example wrapper */
@@ -145,8 +145,10 @@ body { background: #e8e8e8; }
 .effects {
 	height: 180px;
 	-webkit-perspective: 800px;
+	-o-perspective: 800px;
 	-ms-perspective: 800px;
 	perspective: 800px;
+	-o-perspective-origin: 50% 50%;
 	-webkit-perspective-origin: 50% 50%;
 	-ms-perspective-origin: 50% 50%;
 	perspective-origin: 50% 50%;
@@ -155,24 +157,29 @@ body { background: #e8e8e8; }
 .effects ul {
 	-webkit-transform-style: preserve-3d;
 	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
 .effects ul li {
 	position: relative;
 	margin: 0 -20px;
+	-o-transform: rotateY(60deg) scale(0.9);
 	-webkit-transform: rotateY(60deg) scale(0.9);
 	-ms-transform: rotateY(60deg) scale(0.9);
 	transform: rotateY(60deg) scale(0.9);
+	-o-transition: -o-transform 300ms ease-out;
 	-webkit-transition: -webkit-transform 300ms ease-out;
 	transition: transform 300ms ease-out;
 }
 .effects ul li.active {
 	z-index: 10;
+	-o-transform: scale(1);
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
 	transform: scale(1);
 }
 .effects ul li.active ~ li {
+	-o-transform: rotateY(-60deg) scale(0.9);
 	-webkit-transform: rotateY(-60deg) scale(0.9);
 	-ms-transform: rotateY(-60deg) scale(0.9);
 	transform: rotateY(-60deg) scale(0.9);

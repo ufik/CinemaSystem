@@ -265,9 +265,11 @@ HTML5 DateTime polyfill | Jonathan Stipe | https://github.com/jonstipe/datetime-
         style = $this.attr('style');
         if ((value != null) && /^\d{4,}-\d\d-\d\dT\d\d:\d\d(?:\:\d\d(?:\.\d+)?)?Z$/.test(value)) {
           value = readDateTime(value);
+          
         } else {
           value = new Date();
         }
+        
         if (min != null) {
           min = readDateTime(min);
           if (value < min) {
@@ -391,6 +393,7 @@ HTML5 DateTime polyfill | Jonathan Stipe | https://github.com/jonstipe/datetime-
           var dateObj, origDate;
           origDate = readDateTime($hiddenField.val());
           dateObj = $.datepicker.parseDate('MM dd, yy', dateText);
+          dateObj.setUTCDate(dateObj.getUTCDate() + 1); // fixed
           dateObj.setUTCHours(origDate.getUTCHours());
           dateObj.setUTCMinutes(origDate.getUTCMinutes());
           dateObj.setUTCSeconds(origDate.getUTCSeconds());
@@ -400,6 +403,7 @@ HTML5 DateTime polyfill | Jonathan Stipe | https://github.com/jonstipe/datetime-
           } else if ((max != null) && dateObj > max) {
             dateObj.setTime(max.getTime());
           }
+          
           dateObj = stepNormalize(dateObj, hiddenField);
           $hiddenField.val(makeDateTimeString(dateObj)).change();
           $timeField.val(makeTimeDisplayString(dateObj));

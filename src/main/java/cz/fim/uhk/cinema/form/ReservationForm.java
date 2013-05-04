@@ -2,7 +2,12 @@ package cz.fim.uhk.cinema.form;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import cz.fim.uhk.cinema.entity.ReservationItem;
+import cz.fim.uhk.cinema.service.ProgramService;
 
 public class ReservationForm implements Serializable{
 	
@@ -19,6 +24,7 @@ public class ReservationForm implements Serializable{
 	private String email;
 	private String telephone;
 	private List<String> programItems;
+	private List<ReservationItem> reservationItems = new ArrayList<ReservationItem>();
 	
 	public ReservationForm(Timestamp date, Integer contact_id,
 			String firstname, String lastname, String email, String telephone, List<String> programItems) {
@@ -120,6 +126,24 @@ public class ReservationForm implements Serializable{
 	public void setId_reservation(Integer id_reservation) {
 		this.id_reservation = id_reservation;
 	}
-
+	
+	public List<ReservationItem> getReservationItems(){
+		
+		
+		for (int i = 0; i < programItems.size(); i++) {
+			
+			List<String> items = Arrays.asList(programItems.get(i).split("\\s*,\\s*"));
+			
+			ReservationItem tmp = new ReservationItem();
+			if(items.size() > 1) tmp.setColumn(Integer.valueOf(items.get(1)));
+			tmp.setRow(Integer.valueOf(items.get(0)));
+			
+			//tmp.setProgram(items.get(2));
+			
+			if(!reservationItems.contains(tmp)) reservationItems.add(tmp);
+		}
+		
+		return reservationItems;
+	}
 	
 }

@@ -73,7 +73,7 @@ public class Program implements Serializable{
 	}
 	
 	public boolean getOld(){
-		if(this.date.compareTo(new Timestamp(new java.util.Date().getTime())) > 0) return true;
+		if(this.date.compareTo(new Timestamp(new java.util.Date().getTime())) < 0) return true;
 		
 		return false;
 	}
