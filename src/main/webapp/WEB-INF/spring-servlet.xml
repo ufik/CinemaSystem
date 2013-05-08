@@ -22,7 +22,7 @@
 <!-- 	<context:annotation-config /> -->
 <mvc:annotation-driven />
 
-<context:component-scan base-package="cz.fim.uhk.cinema.controller" />
+<context:component-scan base-package="cz.uhk.fim.cinema.controller" />
 
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -78,62 +78,62 @@
 	</bean>
 	
 	<bean id="userDAO"
-		class="cz.fim.uhk.cinema.dao.UserDAO">
+		class="cz.uhk.fim.cinema.dao.UserDAO">
 	</bean>
 	
 	<bean id="contactDAO"
-		class="cz.fim.uhk.cinema.dao.ContactDAO">
+		class="cz.uhk.fim.cinema.dao.ContactDAO">
 	</bean>
 	
 	<bean id="movieDAO"
-		class="cz.fim.uhk.cinema.dao.MovieDAO">
+		class="cz.uhk.fim.cinema.dao.MovieDAO">
 	</bean>
 	
 	<bean id="programDAO"
-		class="cz.fim.uhk.cinema.dao.ProgramDAO">
+		class="cz.uhk.fim.cinema.dao.ProgramDAO">
 	</bean>
 	
 	<bean id="reservationsDAO"
-		class="cz.fim.uhk.cinema.dao.ReservationsDAO">
+		class="cz.uhk.fim.cinema.dao.ReservationsDAO">
 	</bean>
 	
 	<bean id="hallDAO"
-		class="cz.fim.uhk.cinema.dao.HallDAO">
+		class="cz.uhk.fim.cinema.dao.HallDAO">
 	</bean>
 		
 	<bean id="customUserDetailsService"
-		class="cz.fim.uhk.cinema.service.CustomUserDetailsService">
+		class="cz.uhk.fim.cinema.service.CustomUserDetailsService">
 	</bean>
 		
 	<bean id="contactService"
-		class="cz.fim.uhk.cinema.service.ContactService">
+		class="cz.uhk.fim.cinema.service.ContactService">
 	</bean>
 	
 	<bean id="movieService"
-		class="cz.fim.uhk.cinema.service.MovieService">
+		class="cz.uhk.fim.cinema.service.MovieService">
 	</bean>
 	
 	<bean id="programService"
-		class="cz.fim.uhk.cinema.service.ProgramService">
+		class="cz.uhk.fim.cinema.service.ProgramService">
 	</bean>
 	
 	<bean id="reservationsService"
-		class="cz.fim.uhk.cinema.service.ReservationsService">
+		class="cz.uhk.fim.cinema.service.ReservationsService">
 	</bean>
 
 	<bean id="hallService"
-		class="cz.fim.uhk.cinema.service.HallService">
+		class="cz.uhk.fim.cinema.service.HallService">
 	</bean>
 	
 	<bean id="movieForm"
-		class="cz.fim.uhk.cinema.form.MovieForm">
+		class="cz.uhk.fim.cinema.form.MovieForm">
 	</bean>
 	
 	<bean id="programForm"
-		class="cz.fim.uhk.cinema.form.ProgramForm">
+		class="cz.uhk.fim.cinema.form.ProgramForm">
 	</bean>
 
 	<bean id="reservationForm"
-		class="cz.fim.uhk.cinema.form.ReservationForm">
+		class="cz.uhk.fim.cinema.form.ReservationForm">
 	</bean>
 </beans>

@@ -1,4 +1,9 @@
 
+#reserve{
+	position: fixed;
+	left: 50%;
+	bottom: 0px;
+}
 
 /* Definice salu */
 #hall {
@@ -18,6 +23,10 @@
 
 .seat.selected {
 	background-color: #336699;
+}
+
+.seat.reserved {
+	background-color: #991111;
 }
 
 /* Program na hlavni strane */

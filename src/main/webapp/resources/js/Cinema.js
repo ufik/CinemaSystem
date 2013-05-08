@@ -7,6 +7,9 @@ function Cinema(){
 	self.init = function(){
 		self.startSlider();
 		setInterval("cinema.printActualTime()", 250);
+		self.printActualTime();
+		
+		self.registerDeleteProgramItem();
 	};
 	
 	/**
@@ -69,13 +72,13 @@ function Cinema(){
 			var column = $(this).data("column");
 			var taken = $(this).data("taken");
 			
-			if(!taken){
+			if(!taken && !$(this).hasClass("reserved")){
 				$(this).addClass("selected");
 				$(this).data('taken', true);
 				self.addProgramItem(this);
 				
 				console.log("Vybráno sedadlo číslo " + column + " z řady " + row + ".");
-			}else{
+			}else if(!$(this).hasClass("reserved")){
 				if($(this).hasClass('selected') == true){
 					$(this).removeClass('selected');
 					$(this).data('taken', false);
@@ -83,6 +86,8 @@ function Cinema(){
 				}else{
 					console.log("Sedadlo uz je vybrane.");
 				}
+			}else{
+				console.log("Nelze objednat toto sedadlo.");
 			}
 		});
 	};
@@ -91,20 +96,28 @@ function Cinema(){
 	 * 
 	 * @param seat
 	 */
-	self.addProgramItem = function(seat, row, column){
+	self.addProgramItem = function(seat, row, column, idProgram){
 		var s = $(seat).data();
+		
 		var noInput = false;
 		var programId = $("#programId").val();
 		
 		if(seat == null){
-			s = {row: row, column: column};
-			noInput = true;
+			s = {row: row, column: column, idProgram: idProgram};
+			noInput = false;
+		}
+		if(typeof s.idProgram == "undefined"){
+			s.idProgram = programId;
 		}
 		
-		var input = "<input class='"+s.row +"-"+s.column +"' type='hidden' name='programItems' value='"+s.row +","+s.column +","+programId+"' />";
+		var input = "<input class='"+s.row +"-"+s.column +"' type='hidden' name='programItems' value='"+s.row +","+s.column +","+s.idProgram+"' />";
 		var block = "<div class='"+s.row +"-"+s.column +"'>Rezervováno sedadlo "+s.column+" z řady "+s.row+".</div>";
 		
-		$("span.seat[data-row='"+s.row+"'] span.seat[data-column='"+s.column+"']").addClass("selected");
+		if(programId == idProgram){
+			$("span.seat[data-row='"+row+"'][data-column='"+column+"']").addClass("selected");
+			$("span.seat[data-row='"+row+"'][data-column='"+column+"']").data("taken", true);
+		}
+		
 		if(!noInput) $("#reserveForm").append(input);
 		$("#reserve").append(block);
 		console.log("adding reservation item");
@@ -121,6 +134,27 @@ function Cinema(){
 		console.log("removing reservation item");
 	};
 	
+	self.registerDeleteProgramItem = function(){
+		$(".reservationDelete").click(function(){
+			$(this).parent().parent().remove();
+			return false;
+		});
+	};
+	
+	self.setReserved = function(data){		
+		for ( var int = 0; int < data.data.length; int++) {
+			var item = data.data[int];
+			self.markAsReserved(item.row, item.column);
+		}
+	};
+	
+	self.markAsReserved = function(row, column){
+		console.log(row, column);
+		
+		$("span.seat[data-row='"+row+"'][data-column='"+column+"']").addClass("reserved");
+		console.log($("span.seat[data-row='"+row+"'] span.seat[data-column='"+column+"']"));
+	};
+	
 	/**
 	 * 
 	 */
@@ -128,7 +162,7 @@ function Cinema(){
 		if($("#timestamp").length > 0){
 			//For todays date;
 			Date.prototype.today = function(){ 
-			    return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear() 
+			    return ((this.getDate() < 10)?"0":"") + this.getDate() +"."+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"."+ this.getFullYear() 
 			};
 			//For the time now
 			Date.prototype.timeNow = function(){
@@ -136,7 +170,7 @@ function Cinema(){
 			};
 			
 			var newDate = new Date();
-			var datetime = newDate.today() + " @ " + newDate.timeNow();
+			var datetime = newDate.today() + " " + newDate.timeNow();
 			
 			console.log("time testing...");
 			$("#timestamp").html(datetime);

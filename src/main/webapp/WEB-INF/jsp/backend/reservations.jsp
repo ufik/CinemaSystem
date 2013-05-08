@@ -1,7 +1,5 @@
 <%@include file="header.jsp" %>
 
-<a href="admin/reservations/form" class="btn btn-large">Přidat rezervaci</a><br /><br />
-
 <table class="datagrid">
 	<tr>
 	   	<th>Zákazník</th>
@@ -12,12 +10,12 @@
     
   <c:forEach var="reservation" items="${reservations}">
     <tr>
-      <td>${reservation.contact.firstname} ${reservation.contact.lastname}</td>
-      <td>${reservation.contact.email}</td>
-      <td>${reservation.date}</td>
+      <td>${reservation.firstname} ${reservation.lastname}</td>
+      <td>${reservation.email}</td>
+      <td><fmt:formatDate value="${reservation.date}" pattern="dd.MM.yyyy HH:mm:ss" /></td>
       <td>
-	      <a class="btn btn-mini btn-warning" href="admin/reservations/form/${reservation.id_reservation}">Upravit</a>
-	      <a class="confirm btn btn-mini btn-danger" href="admin/reservations/delete/${reservation.id_reservation}">Smazat</a> 
+	      <a class="btn btn-mini btn-warning" href="admin/reservations/form/${reservation.id_reservation}">Detail</a>
+	      <a class="btn btn-mini btn-danger confirm" href="admin/reservations/delete/${reservation.id_reservation}">Smazat</a>
 	  </td>
     </tr>
   </c:forEach>

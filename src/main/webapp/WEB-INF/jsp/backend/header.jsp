@@ -37,8 +37,7 @@
 <header>
 	<div id="head-pannel">
 		<time id="timestamp"></time>
-		<a class="btn btn-primary" href="">Nastavení účtu</a>
-		<a class="btn btn-danger confirm" href="">Odhlásit se</a>
+		<spring:url value="/logout" var="logout_url" /><a class="btn btn-danger confirm" href="${logout_url}">Odhlásit se</a>
 	</div>
 </header>
 

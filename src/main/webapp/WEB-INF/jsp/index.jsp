@@ -1,4 +1,5 @@
 <%@include file="frontend/header.jsp" %>
+<%@include file="frontend/reservationBox.jsp" %>
 
 <h2>Dnešní program</h2>
 

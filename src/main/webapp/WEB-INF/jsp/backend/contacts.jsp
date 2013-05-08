@@ -11,11 +11,11 @@
    
   <c:forEach var="contact" items="${contacts}">
     <tr>
-      <td><a class="btn btn-mini btn-warning" title="Upravit kontakt ${contact.firstname} ${contact.surname}?" href="admin/contacts/form/${contact.id_contact}">${contact.firstname} ${contact.surname}</a></td>
-      <td>${contact.email} ${contact.telephon}</td>
+      <td><a class="btn btn-mini btn-warning" title="Upravit kontakt ${contact.firstname} ${contact.lastname}?" href="admin/contacts/form/${contact.id}">${contact.firstname} ${contact.lastname}</a></td>
+      <td>${contact.email} ${contact.telephone}</td>
       <td>
-	      <a class="btn btn-mini btn-warning" title="Upravit kontakt ${contact.firstname} ${contact.surname}?" href="admin/contacts/form/${contact.id_contact}">Upravit</a>
-	      <a class="btn btn-mini btn-danger confirm" title="Smazat kontakt ${contact.firstname} ${contact.surname}?" href="admin/contacts/delete/${contact.id_contact}">Smazat</a> 
+	      <a class="btn btn-mini btn-warning" title="Upravit kontakt ${contact.firstname} ${contact.lastname}?" href="admin/contacts/form/${contact.id}">Upravit</a>
+	      <a class="btn btn-mini btn-danger confirm" title="Smazat kontakt ${contact.firstname} ${contact.lastname}?" href="admin/contacts/delete/${contact.id}">Smazat</a> 
 	  </td>
     </tr>
   </c:forEach>
